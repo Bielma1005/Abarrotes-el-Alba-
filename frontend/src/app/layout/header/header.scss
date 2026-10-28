@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--blanco);
+  border-bottom: 4px solid var(--acento);
+  box-shadow: var(--sombra);
+}
+
+.logo {
+  width: 56px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.marca {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+  color: var(--titulo);
+}
+
+.giro {
+  margin-top: 4px;
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--marino);
+}
+
+.leyenda {
+  margin: 0 0 0 auto;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+@media (max-width: 600px) {
+  .leyenda {
+    display: none;
+  }
+}

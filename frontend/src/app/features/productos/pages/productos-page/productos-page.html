@@ -1,0 +1,56 @@
+<section class="filtros">
+  <app-search-box
+    placeholder="Buscar producto o marca..."
+    (buscar)="cambiarBusqueda($event)"
+  />
+
+  <div class="chips">
+    <button type="button" [class.activo]="!categoria()" (click)="cambiarCategoria('')">
+      Todas
+    </button>
+    @for (cat of servicio.categorias(); track cat) {
+      <button type="button" [class.activo]="categoria() === cat" (click)="cambiarCategoria(cat)">
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  <label class="toggle">
+    <input
+      type="checkbox"
+      [checked]="soloSinUbicacion()"
+      (change)="soloSinUbicacion.set($any($event.target).checked)"
+    />
+    Mostrar solo productos sin ubicación
+  </label>
+</section>
+
+@if (servicio.error()) {
+  <p class="aviso error">{{ servicio.error() }}</p>
+} @else if (servicio.cargando() && servicio.productos().length === 0) {
+  <p class="aviso">Cargando productos...</p>
+} @else {
+  <p class="conteo">
+    {{ productosVisibles().length }}
+    {{ productosVisibles().length === 1 ? 'producto' : 'productos' }}
+  </p>
+
+  <section class="grid">
+    @for (producto of productosVisibles(); track producto.id) {
+      <app-producto-card [producto]="producto" (mover)="abrirMover($event)" />
+    } @empty {
+      <p class="aviso">No se encontraron productos.</p>
+    }
+  </section>
+}
+
+@if (productoEditando(); as producto) {
+  <app-ubicacion-form
+    [producto]="producto"
+    [zonas]="servicio.zonas()"
+    [guardando]="guardando()"
+    [error]="errorGuardar()"
+    (guardar)="guardarUbicacion($event)"
+    (cancelar)="cerrarMover()"
+  />
+}

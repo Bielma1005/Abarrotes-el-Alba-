@@ -1,1 +1,68 @@
-/* You can add global styles to this file, and also import other style files */
+// Colores tomados del logo de El Alba.
+// Si cambia el logo, solo se cambian estos valores.
+:root {
+  // Fondos
+  --crema: #faf7ef;
+  --crema-oscuro: #ece4d0;
+  --blanco: #ffffff;
+
+  // Colores del logo
+  --sol: #fcc602;
+  --naranja: #ff9b07;
+  --dorado: #b8923f;
+  --dorado-oscuro: #8a6a1f;
+  --dorado-claro: #f4e8c8;
+  --marino: #1d2a5b;
+  --marino-claro: #2f3f7d;
+
+  // Texto
+  --texto: #1d2440;
+  --texto-suave: #6b7088;
+
+  // Estados
+  --verde: #3f7a34;
+  --verde-claro: #e1eed9;
+  --ambar: #a86a00;
+  --ambar-claro: #fdeec4;
+  --peligro: #b3261e;
+  --peligro-claro: #f9dedc;
+
+  // Roles (lo que usan los componentes)
+  --primario: var(--marino);
+  --primario-hover: var(--marino-claro);
+  --acento: var(--dorado);
+  --acento-claro: var(--dorado-claro);
+  --titulo: var(--dorado-oscuro);
+  --precio: var(--marino);
+
+  --fuente-titulo: 'Montserrat', system-ui, sans-serif;
+  --fuente-texto: 'Nunito', system-ui, sans-serif;
+  --radio: 14px;
+  --sombra: 0 2px 10px rgba(29, 42, 91, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--crema);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}

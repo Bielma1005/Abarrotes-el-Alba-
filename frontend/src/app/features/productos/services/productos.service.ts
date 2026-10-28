@@ -3,7 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
-import { FiltrosProducto, Producto, Ubicacion } from './models/producto.model';
+import { FiltrosProducto, Producto, Ubicacion } from '../models/producto.model';
 
 @Injectable({
   providedIn: 'root',

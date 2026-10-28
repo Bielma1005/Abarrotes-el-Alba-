@@ -1,0 +1,95 @@
+.fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: rgba(74, 42, 32, 0.45);
+}
+
+.panel {
+  position: fixed;
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, calc(100% - 32px));
+  padding: 20px;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  border-top: 5px solid var(--acento);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  color: var(--titulo);
+}
+
+.producto {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  span { color: var(--texto-suave); font-size: 0.9rem; }
+}
+
+.actual {
+  margin: 10px 0 16px;
+  padding: 8px 12px;
+  background: var(--crema);
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.opcional {
+  font-weight: 400;
+  color: var(--texto-suave);
+}
+
+input {
+  padding: 11px 12px;
+  border: 2px solid var(--crema-oscuro);
+  border-radius: 10px;
+  background: #fff;
+  font-weight: 400;
+  outline: none;
+
+  &:focus { border-color: var(--primario); }
+}
+
+.error {
+  margin: 0 0 12px;
+  color: var(--peligro);
+  font-weight: 700;
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 999px;
+  background: var(--primario);
+  color: #fff;
+  font-weight: 700;
+
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  &.secundario {
+    background: var(--crema);
+    color: var(--texto);
+  }
+}

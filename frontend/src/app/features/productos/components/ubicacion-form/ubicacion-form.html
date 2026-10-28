@@ -1,0 +1,49 @@
+<div class="fondo" (click)="cancelar.emit()"></div>
+
+<form class="panel" (submit)="enviar($event)">
+  <h2>Mover producto</h2>
+  <p class="producto">
+    <strong>{{ producto().nombre }}</strong>
+    <span>{{ producto().marca }} · {{ producto().presentacion }}</span>
+  </p>
+  <p class="actual">Ahora está en: <b>{{ producto().ubicacion.zona }}</b></p>
+
+  <label>
+    Zona
+    <input
+      list="lista-zonas"
+      placeholder="Ej. Pasillo 1, Refrigerador, Mostrador"
+      [value]="zona()"
+      (input)="zona.set($any($event.target).value)"
+      required
+      autofocus
+    />
+    <datalist id="lista-zonas">
+      @for (z of zonasSugeridas(); track z) {
+        <option [value]="z"></option>
+      }
+    </datalist>
+  </label>
+
+  <label>
+    Estante <span class="opcional">(opcional)</span>
+    <input
+      type="number"
+      min="1"
+      placeholder="Ej. 2"
+      [value]="estante() ?? ''"
+      (input)="cambiarEstante($any($event.target).value)"
+    />
+  </label>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <div class="acciones">
+    <button type="button" class="secundario" (click)="cancelar.emit()">Cancelar</button>
+    <button type="submit" [disabled]="!zona().trim() || guardando()">
+      {{ guardando() ? 'Guardando...' : 'Guardar' }}
+    </button>
+  </div>
+</form>

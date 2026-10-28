@@ -1,0 +1,26 @@
+<article class="card">
+  <div class="top">
+    <span class="categoria">{{ producto().categoria }}</span>
+    <span class="stock" [class]="'stock ' + estadoStock().clase">{{ estadoStock().texto }}</span>
+  </div>
+
+  <h3>{{ producto().nombre }}</h3>
+  <p class="detalle">{{ producto().marca }} · {{ producto().presentacion }}</p>
+
+  <p class="precio">{{ producto().precio_venta | currency: 'MXN' : 'symbol-narrow' : '1.2-2' }}</p>
+
+  <div class="bottom">
+    <span class="ubicacion" [class.sin-asignar]="sinUbicacion()">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" />
+        <circle cx="12" cy="9.5" r="2.5" />
+      </svg>
+      {{ producto().ubicacion.zona }}
+      @if (producto().ubicacion.estante) {
+        · Estante {{ producto().ubicacion.estante }}
+      }
+    </span>
+
+    <button type="button" (click)="mover.emit(producto())">Mover</button>
+  </div>
+</article>
